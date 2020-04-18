@@ -11,6 +11,17 @@ module.exports.beginChat = (app, req, res) => {
     });
     return;
   }
+  app.get('io').emit('msgToClient', {
+    name: dataForm.name,
+    message: 'Logged in chat'
+  });
 
-  res.render("chat");
+  app.get('io').emit('partneerToClient', {
+    name: dataForm.name,
+  });
+
+
+  res.render("chat", {
+    dataForm: dataForm
+  });
 };
