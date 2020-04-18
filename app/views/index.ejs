@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
         integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <!-- estilo -->
+    <!-- style -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -26,12 +26,13 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form accept-charset="UTF-8" role="form" class="form-signin">
+                        <form accept-charset="UTF-8" role="form" class="form-signin" action='chat' method='post'>
                             <fieldset>
                                 <label class="panel-login">
                                     <div class="login_result"></div>
                                 </label>
-                                <input class="form-control" placeholder="Name or nickname" id="nickname" type="text">
+                                <input class="form-control" placeholder="Name or nickname" id="nickname" name="name"
+                                    type="text">
                                 <br></br>
                                 <input class="btn btn-lg btn-success btn-block" type="submit" id="enter"
                                     value="Sign in »">
@@ -39,10 +40,23 @@
                         </form>
                     </div>
                 </div>
+
+                <div>
+                    <% if( typeof validation !== 'undefined' && validation.length > 0 ) { %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger">
+                                <strong>!Attention</strong>
+                                <ul>
+                                    <% validation.forEach( item => { %>
+                                    <li><%= item.msg %></li>
+                                    <% }) %> </ul>
+                            </div>
+                        </div>
+                    </div> <% } %> </div>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
